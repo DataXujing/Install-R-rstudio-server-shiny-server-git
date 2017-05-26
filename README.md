@@ -149,6 +149,78 @@ Git功能多到夸张，让人觉得至今都没有彻底掌握她，现在如�
 
 ## 5. Shiny-server共享我的ShinyApp
 
+### (1). 运行shiny的方式
+
+
+现在你可以创建一个有用的Shiny应用了，但怎样与小伙伴们一同分享自己
+的应用呢？首先将向你展示与他人分享Shiny
+应用的几种方法。两个基本的分享选择是：
+  
++ 以两个文件server.R和ui.R的形式来分享你的Shiny应用
+  - 这是最简单的分享方式，但是仅当你的用户在电脑上安装了R，并且知晓如何使用R后，这才得以实现。用户可以在自己的电脑上运行这些脚本来打开程序，就像你平常运行应用程序一样。
+  
++ 以网页形式分享你的Shiny应用。这无疑是分享应用最友善的途径。用户可
+以通过互联网打开浏览器对应用进行操作。他们会发现你的应用完全渲染呈
+现、即刻更新，并且操作自如。
+  
++两个R文件的共享形式拥有R语言的任何人都可以运行你的应用。他们仅需要你的server.R和ui.R的一份副本（copy）即可， 同时在一些情况下也需要一些应用中的补充材料（如www文件夹或者是helpers.R文件）。
+可以通过发送email(以zip文件的形式)或者在线共享来传播你的文件。你的用户可以将文件存放在一个他们自己的目录中。
+仅需在命令行中输入以下命令即可运行，与你在电脑上的操作别无二致。
+  - `#install.packages("shiny")`
+  - `library(shiny)`  
+  - `runApp("shiny-REmap")`  
+
++ Shiny拥有三个内置命令可以使打开在线文件变得轻松快捷，它们是：runUrl, runGitHub和runGist. 
+
++ **runUrl**: runUrl会直接从网络链接中下载运行一个Shiny应用。使用runUrl的方法是：将你的
+   Shiny应用目录保存为zip文件。在网页中上传zip文件获得超链接，任何人都可以访问链接并且加以运行， 只需在R命令行中输入：
+
+   - library(shiny)  
+   - runUrl("<the web link>") 
+
++ **runGitHub**:  如果你没有属于自己的网页来托管文件，你可以在<www.github.com>上免费托管自己的文件。
+  使用GitHub，你需要注册（sign up）并且选取一个用户名（user name）。
+ 通过GitHub来分享自己的应用，请在GitHub上创建一个项目存储库（project repository），然后在存储库中保存你的server.R和ui.R文件，以及一些运行程序所需的补充文件。你的用户可以通过以下代码运行你的Shiny应用。
+  runGitHub("shiny-REmap","DataXujing") 
+以网页形式分享应用
+  
++ 以上的分享方式有着同样的限制条件，他们需要你的用户事先在电脑上安装好R与Shiny包。
+  然而，Shiny提供了绝好的分享方式，使得用户安装R语言不是必须的硬性要求。你的Shiny应用会用世界上最流行的传播
+  工具：网页，来进行分享。如果你有自己应用的URL，用户可以访问这个应用程序（并且丝毫不必担心代码的问题）。
+  如果你对网页保存应用驾轻就熟，或者你有权限接触某个IT部门，你可以自己主宰自己的Shiny应用。
+  如果你期待一个更为简便的方式或者需要专家支持，RStudio提供三种方法来将你的Shiny应用放入网页中，这三种方法是：
+  1. Shinyapps.io 
+  2.Shiny Server  
+  3.Shiny Server Pro 
+
+
+
+### (2). 安装Shiny server
+
++ step1: sudo apt-get install gdebi-core
++ step2: wget https://download3.rstudio.org/ubuntu-12.04/x86_64/shiny-server-1.5.3.838-amd64.deb
++ step3: sudo gdebi shiny-server-1.5.3.838-amd64.deb
++ step4: 默认端口号3838，打开浏览器输入<http://localhost:3838>或<http：//ip:3838>,如图所示，恭喜你成功了：
+![3838登陆成功](shinyserver.png)
+
+踩过的坑：
+
+1. 如果不想中断shiny应用来更新应用可以用下面的命令：sudo reload shiny-server
+
+2. shiny server的lib与R的lib不是同一个，在R中输入> .libPaths()，查看路径。如果你想在shiny server中安装packages,可在终端中输入：
+`$ sudo su - -c "R -e \"install.packages('packages')\""`或`$ sudo su - -c "R -e \"devtools::install_github('packages')\""`
+
+3. 一定要在shiny server 对应的lib中安装shiny和rmarkdown,否则不会正常启动shiny server
+
+
++ 应用程序位置
+Shiny Server默认会在/srv/shiny-server/sample-apps中存放shiny代码文档，你可以在浏览器中输入该路径运行你的shinyApp。
+![运行成功](successshiny.png)
+![例子](shinyexample1.png)
+
+
+
+
 
 ## 6. Win64下安装 R server 
 
