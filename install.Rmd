@@ -233,3 +233,67 @@ Shiny Server默认会在/srv/shiny-server/sample-apps中存放shiny代码文档�
 ## 6. Win64下安装 R server 
 
 
+
+**声明：[该部分转载自雪晴数据网](http://www.xueqing.tv/cms/article)**
+
+![pic1](serverpic/rserver1.png)
+
+Microsoft R Server 以前称为 Revolution R Enterprise (RRE)，原来为Revolution Analytics公司的产品。 微软在2015年一月份宣布收购Revolution Analytics，
+现在SQL Server 2016已经支持连接R语言和Microsoft R Server的大数据算法。
+
+Microsoft R Server支持各种大数据分析、预测模型和机器学习功能，并为用户提供与 R 语言完全兼容的最经济高效且速度最快的大数据分析，这实际上就是现代分析用户的标准。 
+虽然很多人对这个商业版的R感兴趣，但国内网站上一直没有关于Microsoft R Server的资料，也不知道从哪里下载软件。
+2015年11月，微软发布了全新的Visual Studio Dev Essentials项目，致力于为开发者提供为任意平台创建、编译和部署应用所需的所有开发工具。该项目包括免费应用（涵盖Visual Studio Community 和Visual Studio Express）、访问云服务和软件测试。本文将介绍通过Visual Studio Dev Essentials网站免费下载最新版的Microsoft R Server，以及安装中需要注意到问题。 
+
+### 加入Visual Studio Dev Essentials 
+
+进入网站 <https://www.visualstudio.com/dev-essentials>，点击立即加入或访问（如果你看到的是英文界面，就是点击Join or Access Now），如
+果有 Microsoft 账户直接登录，没有则注册Microsoft 账户。 
+
+![pic2](serverpic/rserver2.jpg)
+
+登录之后，不管跳转到哪里，请确保最后你都进入页面<https://my.visualstudio.com>
+
+如果你之前没有加入 Visual Studio Dev Essentials，那么你会在页面上看到下面的一行提示 To access the following Visual Studio Dev Essentials benefits, please accept the terms of the program. 点accept 
+
+![pic3](serverpic/rserver3.png)
+
+同意了用户协议之后，你再看Subscriptions这页，已经有Visual Studio Dev Essentials的免费订阅了。 
+
+![pic4](serverpic/rserver4.png)
+
+
+### 第二步：下载Microsoft R Server 
+
+进入Downloads页面，搜索microsoft R 
+
+![pic5](serverpic/rserver5.jpg)
+
+选择最新版，也就是Microsoft R Server 9.1.0，选择跟你操作系统相匹配的版本，比如我选择Microsoft R Server 9.1.0 for Windows (x64) - (English) 
+
+![pic6](serverpic/rserver6.jpg)
+
+如果你没有加入Visual Studio Dev Essentials，搜索的时候会看到下面的提示 
+
+![pic7](serverpic/rserver7.jpg)
+
+返回前面的步骤，加入就可以了。
+
+
+### 第三步：安装Microsoft R Server 
+
+解压缩en_microsoft_r_server_910_for_windows_x64_10324119.zip文件，双击运行RServerSetup.exe启动安装程序。 
+在安装过程中，安装程序会自动去微软的服务器下载需要的组件，但是由于墙的阻隔，有些组件很难下载到.
+血清数据网已经将这三个组件打包上传到百度云盘，需要的话可以下载，链接: <http://pan.baidu.com/s/1bptNbER> 密码: 73nm 
+**【注：仅限于测试和学习使用，下载后请在24小时之内删除】**
+
+当你的网络不好，或者是因为在墙内，安装程序会长时间停留在下载的步骤，就像这样 
+
+![pic8](serverpic/rserver8.jpg)
+
+或者由于机器没联网，无法下载组件，这两种情况都要用离线安装的方式。提前下载并安装好Microsoft MPI 7.1，把SRO_3.3.3.0_1033.cab和MLM_9.1.0.0_1033.cab文件放到系统临时文件夹里，位置在C:\Users\用户名\AppData\Local\Temp，需要你把用户名替换成自己的用户名，比如我的就是下面这样,回过来看安装程序，点击 Continue，可以看到安装包和安装条件；然后选择安装路径、勾选 Pre-trained 
+![pic10](serverpic/rserver10.png)
+然后接受 License Agreement ，Continue，最后点击 Install 就可以安装了。 
+![pic11](serverpic/rserver11.png)
+
+
