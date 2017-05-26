@@ -71,6 +71,82 @@ rstudio-server,例如我的用户名xujing
 ## 4. Git
 
 
+Git属于分散型版本管理系统，是为版本管理而设计的软件。Linux的创始人
+Linus Torvalds在2005年开发了Git的原型程序。当时，由于在Linux内核开发中
+使用的既有版本管理系统的开发方许可证发生了变更，为了更换新的版本管理系统，Torvalds开发了Git。
+
+Linux内核的更新速度在全世界也算是首屈一指。因此势必需要一个功能强,性能高的版本管理系统来提高开发速度。
+Git是由Linus Torvalds亲自着手开发的，可以说在功能上与性能方面无可挑剔。
+程序员们愿意接受Git,很大程度上取决于这个背景。
+Git功能多到夸张，让人觉得至今都没有彻底掌握她，现在如果没有Git软件，开发恐怕成为一件非常痛苦的事情。在发布之初，Git由于其艰涩难懂，只有部分黑客使用，但随着众多开发者的努力，现在他被全世界的码农们所采用。
+
+### (1). 让我们围观Git的安装与推送远程仓库(GitHub)：
+
++ #安装git, sudo apt-get install git
+
++ #生成rsa密钥对  ssh-keygen -t rsa
+
++ #查看公钥并  cat /home/xujing/.ssh/id_rsa.pub
+
++ 把公钥并上传到github
+
++ 在GitHub上创建一个新的Project: RstudioTest
+
++ 绑定本地项目(/home/xujing/R/下建文件夹github,放入创建的项目）
+
++ cd /home/xujing/R/github
+  
+  - git init  #在当前项目工程下履行这个号令相当于把当前项目git化
+
+  - git add . #把当前目次下代码参加git的跟踪中，意思就是交给git经管，提交到本地库
+
+  - git commit -m 'RstudioTest1' #相当于写点提交信息，如果这步有错误，可以按照提示输入userid xu*** email *****
+
+  - git remote add origin git@github.com:bsspirit/rstudio-demo.git #这个相当于指定本地库与github上的哪个项目相连
+
+  - git push -u origin master #将本地库提交到github上
+
++ 恭喜你,完成了。
+
+
+### (2). 踩过的坑
+
+
++ git init 产生的目录解释：`error: src refspec master does not match any.`
+  - 解释：引起该错误的原因是，目录中没有文件，空目录是不能提交上去的
+
++ `error: insufficient permission for adding an object to repository database ./objects`
+
+  - 服务端没有可写目录的权限
+  - 错误提示：fatal: remote origin already exists.
+  - 解决办法：$ git remote rm origin
+  - 错误提示：error: failed to push som refs to ........
+  - 解决办法：$ git pull origin master //先pull 下来 再push 上去
+
+
+
+### (3). 其他简单命令
+
++ git clone git＠github.com:DataXujing/....git #将github上的项目down下来。
+
++ git fetch origin  #取得长途更新，这里可以看做是筹办要取了
+
++ git merge origin/master   #把更新的内容归并到本地分支/master
+
++ 下面是删除文件后的提交
+
+  - git status  #可以看到我们删除的哪些文件
+
+  - git add .  #删除之后的文件提交git经管。
+
+  - git rm a.c  #删除文件
+
+  - git rm -r gittest  #删除目次
+
++ git reset --hard HEAD 回滚到add之前的状态
++ git diff 比较的是跟踪列表中的文件和文件系统中文件的差别
+
+
 ## 5. Shiny-server共享我的ShinyApp
 
 
